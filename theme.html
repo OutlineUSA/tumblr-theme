@@ -1,0 +1,541 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!--
+  ichi -
+  theme by Liam Cooke
+  http://inky.tumblr.com/
+-->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+  <meta name='apple-mobile-web-app-capable' content='yes'>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="target-densitydpi=160dpi, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+
+  <meta name="color:Page" content="#ffffff"/>
+  <meta name="color:Text" content="#222222"/>
+  <meta name="color:Minor Text" content="#777777"/>
+  <meta name="color:Borders" content="#aaaaaa"/>
+  <meta name="color:Link" content="#145091"/>
+  <meta name="color:Active Link" content="#2c3a49"/>
+  <meta name="color:Highlight" content="#eeeeee"/>
+
+  <meta name="font:Body" content="Georgia, serif"/>
+  <meta name="font:Heading" content="Helvetica Neue"/>
+  <meta name="font:Quote" content="Palatino, 'Palatino Linotype', serif"/>
+  <meta name="font:Capitals" content="Palatino, 'Palatino Linotype', serif"/>
+
+  <meta name="if:Show people I follow" content="0"/>
+  <meta name="if:Link to submit a post" content="0"/>
+  <meta name="if:Link for large images" content="1"/>
+
+  <meta name="text:About page URL" content=""/>
+
+  <meta name="text:Disqus Shortname" content="" />
+
+  <title>{Title}{block:PostSummary}: {PostSummary}{/block:PostSummary}</title>
+  {block:Description}<meta name="description" content="{MetaDescription}"/>{/block:Description}
+
+  <link rel="shortcut icon" href="{Favicon}"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}"/>
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600' rel='stylesheet' type='text/css'>
+  <link href='http://outline.com/static/resources/neosans/stylesheet.css' rel='stylesheet' type='text/css'>
+<style type="text/css">
+body {
+  line-height: 1.45em;
+  font-size: 18px;
+  color: #000;
+  font-family: 'Source Sans Pro';
+  font-weight: 300;
+}
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.3em;
+}
+h1, h2 {
+  font-family: "neo";
+  font-weight: 200;
+}
+h1 a, h2 a {
+  font-weight: inherit;
+}
+h2 {
+  font-size: 2.2em;
+}
+ul, ol {
+  margin-left: 1.8em;
+}
+li {
+  line-height: 1.8em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+a {
+  font-weight: bold;
+}
+a, a:hover {
+  color: inherit;
+}
+blockquote {
+  padding: 10px 15px;
+  border-left-color: #78c1cc;
+  margin: 20px 0 20px 5px;
+}
+blockquote p {
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: italic;
+}
+blockquote p:before {
+  content: '“';
+}
+blockquote p:after {
+  content: '”';
+}
+.post {
+  padding: 2em 0;
+  border-bottom: 1px solid #ddd;
+}
+.meta {
+  color: #999;
+  font-size: 16px;
+}
+.meta p {
+  margin-bottom: 0;
+}
+.tags a {
+  margin: 0 .3em;
+}
+.chat-label {
+  font-weight: bold;
+}
+#pagination .back {
+  float: right;
+}
+#header {
+}
+#header .header_sub {
+  background: #58a7b3;
+  background: #757575;
+  padding: 10px 20px;
+  color: #fff;
+}
+#header h1 {
+  height: 32px;
+}
+#header h1 a {
+  text-indent: -10000px;
+  text-align: left;
+  color: #fff;
+  height: 32px;
+  background: url('https://s3.amazonaws.com/outline-tumblr-assets/blog-logo.png') no-repeat right;
+  background-size: 177px 32px;
+  display: inline-block;
+  width: 56px;
+}
+#header h1 a.homepage-link {
+  background-position: left;
+  width: 110px;
+}
+.span33 {
+  margin: 0 -20px;
+  width: auto;
+}
+#footer {
+  min-height: 100px;
+  padding: 15px 5px;
+}
+#pagination a {
+  background: #bbb;
+  color: #fff;
+  font-size: 16px;
+  padding: 8px 22px;
+  text-decoration: none !important;
+  border-radius: 40px;
+  -webkit-transition: background-color .2s;
+  -moz-transition: background-color .2s;
+  transition: background-color .2s;
+}
+#pagination a:hover {
+  background-color: #999;
+}
+.little-label {
+  text-transform: uppercase;
+  font-size: .8em;
+  margin-top: 4px;
+}
+.blog-links {
+  display: none;
+  margin-top: 7px;
+}
+.blog-links ul {
+  margin-bottom: 0;
+}
+.blog-links .little-label {
+  float: left;
+  margin-right: 7px;
+}
+.blog-links li {
+  display: inline-block;
+  margin: 0 4px;
+}
+a.alt-underline {
+  margin-bottom: 1px;
+}
+a.alt-underline:hover {
+  text-decoration: none;
+  margin-bottom: 0;
+  border-bottom: 1px dotted;
+}
+.social-icons {
+  float: right;
+}
+.social-icons li {
+  display: block;
+  float: left;
+  margin-left: 10px;
+}
+.social-icons a {
+  display: block;
+  width: 32px;
+  height: 32px;
+  text-indent: -10000px;
+  overflow: hidden;
+  text-align: left;
+  background: url('https://s3.amazonaws.com/outline-tumblr-assets/social_icons_small.png') left top no-repeat;
+}
+.social-icons a.twitter-link {
+  background-position: -32px top;
+}
+.author {
+  padding: 20px 10px 10px 10px;
+}
+.author a {
+  color: #000;
+}
+.author img {
+  border-radius: 100px;
+  margin-right: 10px;
+}
+@media (min-width: 550px) {
+  body {
+    font-size: 20px;
+  }
+  .blog-links {
+    display: block;
+  }
+}
+@media (min-width: 768px) and (max-width: 959px) {
+  .new-container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .span33 {
+    margin-left: 0;
+  }
+  .span33, .span66 {
+    float: none;
+  }
+}
+@media (min-width: 960px) {
+  blockquote {
+    margin-left: -20px;
+  }
+  .span33 {
+    width: 220px;
+    padding-left: 100px;
+  }
+  .span66 {
+    width: 540px;
+    margin-left: 80px;
+  }
+  #header {
+    position: fixed;
+    width: inherit;
+    height: 100%;
+    text-align: right;
+  }
+  #header .header_sub {
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    margin-left: -1000px;
+    padding-left: 1000px;
+    padding-right: 40px;
+    padding-top: 50px;
+  }
+  .footer-wrapper {
+    position: relative;
+    left: 280px;
+  }
+  .blog-links {
+    margin-top: 26px;
+  }
+  .blog-links li a {
+    display: block;
+  }
+  .blog-links .little-label {
+    float: none;
+    margin-right: 0;
+  }
+  .blog-links li {
+    display: inline-block;
+    margin: 10px 0;
+  }
+  .little-label {
+    padding-top: 20px;
+  }
+}
+@media (min-width: 1200px) {
+  .span33 {
+    padding-left: 140px;
+  }
+  .span66 {
+    margin-left: 120px;
+  }
+  .footer-wrapper {
+    left: 320px;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 1.5) {
+  .social-icons a {
+    background-image: url('https://s3.amazonaws.com/outline-tumblr-assets/social_icons.png');
+    background-size: 128px 32px;
+}
+{CustomCSS}
+</style>
+  <!--[if lte IE 6]>
+  <style type="text/css">
+    #border {display:none;}
+    body {border-left:0.5em solid {color:Borders};}
+  </style>
+  <![endif]-->
+</head>
+<body>
+<div id="border"></div>
+
+<div class='new-container'>
+  <div class='row'>
+    <div class='span33'>
+      <div id="header">
+        <div class='header_sub'>
+          <h1><a href="http://outline.com" target="_blank" class='homepage-link'>Outline</a> <a href="/">Blog</a></h1>
+          
+          
+          
+          <div class='blog-links'>
+            <p class='little-label'>Founders&rsquo; blogs</p>
+            <ul>
+                <li><a href="https://medium.com/@nikitabier" class='blog-link alt-underline' target='_blank'>Nikita Bier</a></li>
+                <li><a href="https://medium.com/@jeremyblalock" class='blog-link alt-underline' target='_blank'>Jeremy Blalock</a></li>
+                <li><a href="http://vasir.net/blog/" class='blog-link alt-underline' target='_blank'>Erik Hazzard</a></li>
+            </ul>
+          </div>
+          <p class='little-label'>Follow Us</p>
+          <ul class="social-icons">
+            <li class="first"><a class="fb-link" href="https://www.facebook.com/pages/Outline/127028647476315" target="_blank">Like us on Facebook</a></li>
+            <li><a class="twitter-link" target="_blank" href="https://twitter.com/outlineusa">Follow us on Twitter</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class='span66'>
+      <div id="posts">
+      {block:Posts}
+        <div class="post" id="post{PostID}">
+    
+          {block:Text}
+          <div class="content text-post">
+            {block:Title}<h2><a href='{Permalink}'>{Title}</a></h2>{/block:Title}
+    
+            <div class="text">{Body}</div>
+          </div>
+          {/block:Text}
+    
+          {block:Photo}
+          {block:HighRes}{block:IfLinkForLargeImages}
+          {/block:IfLinkForLargeImages}{/block:HighRes}
+          <div class="content photo-post">
+            <div class="photo">
+              {LinkOpenTag}<a href='{URL}'><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></a>{LinkCloseTag}
+            </div>
+    
+            {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+          </div>
+          {/block:Photo}
+    
+          {block:Quote}
+          <div class="content quote-post {Length}-quote">
+            <blockquote class="quote">{Quote}</blockquote>
+    
+            {block:Source}<div class="source">&mdash;&#8194;{Source}</div>{/block:Source}
+          </div>
+          {/block:Quote}
+    
+          {block:Link}
+          <div class="content link-post">
+            <h2 class="link"><a href="{URL}">{Name}</a></h2>
+    
+            {block:Description}<div class="caption">{Description}</div>{/block:Description}
+          </div>
+          {/block:Link}
+    
+          {block:Chat}
+          <div class="content chat-post">
+            {block:Title}<h3>{Title}</h3>{/block:Title}
+    
+            <ol class="chat">
+              {block:Lines}<li class="{Alt} speaker{UserNumber}">
+                {block:Label}<span class="chat-label">{Label}</span>{/block:Label}
+                <span class="line">{Line}</span>
+              </li>{/block:Lines}
+            </ol>
+          </div>
+          {/block:Chat}
+    
+          {block:Video}
+          <div class="content video-post">
+            <div class="video">{Video-400}</div>
+    
+            {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+          </div>
+          {/block:Video}
+    
+          {block:Audio}
+          <p class="meta">{lang:Plays}: <span class="plays">{FormattedPlayCount}</span></p>
+          <div class="content audio-post">
+            <div class="audio">{AudioPlayerBlack}</div>
+    
+            {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+          </div>
+          {/block:Audio}
+        
+          {block:IfDisqusShortname}
+          {block:PermalinkPage}
+          <div id="disqus_thread"></div>
+          <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+          <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript>
+          {/block:PermalinkPage}
+          {/block:IfDisqusShortname}
+    
+          {block:PostNotes}<div class="postnotes">
+            {PostNotes}
+            <div class="clear">&nbsp;</div>
+          </div>{/block:PostNotes}
+          
+          <div class="meta">
+            <h4 class='author'><a href='http://bit.ly/outline-{PostAuthorName}'><img src='{PostAuthorPortraitURL-48}' alt=''></a>
+              <a href='http://bit.ly/outline-{PostAuthorName}' class='alt-underline'>{PostAuthorTitle}</a></h4>
+            {block:Date}
+            <p>{TimeAgo}</p>
+            {/block:Date}
+    
+            {block:Date}{block:IfDisqusShortname}<a href="{Permalink}#disqus_thread" class="meta comments_link"></a>{block:IfDisqusShortname}{/block:Date}
+    
+            {block:NoteCount}<p class="meta">
+              {lang:Notes}:
+              <span class="notecount">{NoteCount}</span>
+            </p>{/block:NoteCount}
+    
+            {block:RebloggedFrom}<p class="reblog">
+              {lang:Reblogged from ReblogParentName 2}
+            </p>{/block:RebloggedFrom}
+    
+            {block:HasTags}<p class="tags">
+              {lang:Tags}:
+              {block:Tags}<a href="{TagURL}">{Tag}</a> {/block:Tags}
+            </p>{/block:HasTags}
+          </div>
+
+        </div>
+      {/block:Posts}
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='span66 footer-wrapper'>
+      <div id="footer">
+        <div id="pagination">
+        {block:Pagination}
+          <p class="back">&nbsp;{block:NextPage}
+            <a href="{NextPage}">{lang:More} &rarr;</a>
+          {/block:NextPage}</p>
+          <p class="forward">{block:PreviousPage}
+            <a href="{PreviousPage}">&larr; {lang:Back}</a>
+          {/block:PreviousPage}&nbsp;</p>
+          <p class="page">
+            {lang:Page CurrentPage of TotalPages}
+          </p>
+        {/block:Pagination}
+    
+        {block:PermalinkPagination}
+          {block:PreviousPost}<p class="back">
+            <a href="{PreviousPost}">{lang:Older} &rarr;</a>
+          </p>{/block:PreviousPost}
+          {block:NextPost}<p class="forward">
+            <a href="{NextPost}">&larr; {lang:Newer}</a>
+          {/block:NextPost}</p>
+        {/block:PermalinkPagination}
+    
+        {block:DayPagination}
+          {block:PreviousDayPage}<p class="back">
+            <a href="{PreviousDayPage}">{lang:Previous day}</a> &rarr;
+          {/block:PreviousDayPage}</p>
+          {block:NextDayPage}<p class="forward">
+            &larr; <a href="{NextDayPage}">{lang:Next day}</a>
+          </p>{/block:NextDayPage}
+        {/block:DayPagination}
+        </div>
+    
+        {block:IfShowPeopleIFollow}
+          {block:GroupMembers}
+            <p id="members" class="avatars">
+              <span>{lang:Members}:</span>
+              {block:GroupMember}
+                <a href="{GroupMemberURL}"><img
+                  src="{GroupMemberPortraitURL-30}" alt="[{GroupMemberName}]"
+                  title="{GroupMemberTitle} ({GroupMemberName})"/></a>
+              {/block:GroupMember}
+            </p>
+          {/block:GroupMembers}
+    
+          {block:Following}
+            <p id="following" class="avatars">
+              <span>{lang:Following}:</span>
+              {block:Followed}
+                <a href="{FollowedURL}"><img
+                  src="{FollowedPortraitURL-30}" alt="[{FollowedName}]"
+                  title="{FollowedTitle} ({FollowedName})"/></a>
+              {/block:Followed}
+            </p>
+          {/block:Following}
+        {/block:IfShowPeopleIFollow}
+    
+      </div>
+    </div>
+  </div>
+</div>
+
+{block:IfDisqusShortname}
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+    var links = document.getElementsByTagName('a');
+    var query = '?';
+    for(var i = 0; i < links.length; i++) {
+    if(links[i].href.indexOf('#disqus_thread') >= 0) {
+        query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+    }
+    }
+    document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/get_num_replies.js' + query + '"></' + 'script>');
+})();
+//]]>
+</script>
+{/block:IfDisqusShortname}
+
+</body>
+</html>
