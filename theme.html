@@ -191,6 +191,9 @@ a.alt-underline:hover {
 }
 .social-icons {
   float: right;
+  position: absolute;
+  top: 5px;
+  right: 20px;
 }
 .social-icons li {
   display: block;
@@ -206,6 +209,9 @@ a.alt-underline:hover {
   text-align: left;
   background: url('https://s3.amazonaws.com/outline-tumblr-assets/social_icons_small.png') left top no-repeat;
 }
+.social-icons a:hover {
+  opacity: .7;
+}
 .social-icons a.twitter-link {
   background-position: -32px top;
 }
@@ -218,6 +224,9 @@ a.alt-underline:hover {
 .author img {
   border-radius: 100px;
   margin-right: 10px;
+}
+.follow-link {
+  display: none;
 }
 @media (min-width: 550px) {
   body {
@@ -289,6 +298,12 @@ a.alt-underline:hover {
   .little-label {
     padding-top: 20px;
   }
+  .follow-link {
+    display: block;
+  }
+  .social-icons {
+    position: static;
+  }
 }
 @media (min-width: 1200px) {
   .span33 {
@@ -335,7 +350,7 @@ a.alt-underline:hover {
                 <li><a href="http://vasir.net/blog/" class='blog-link alt-underline' target='_blank'>Erik Hazzard</a></li>
             </ul>
           </div>
-          <p class='little-label'>Follow Us</p>
+          <p class='little-label follow-link'>Follow Us</p>
           <ul class="social-icons">
             <li class="first"><a class="fb-link" href="https://www.facebook.com/pages/Outline/127028647476315" target="_blank">Like us on Facebook</a></li>
             <li><a class="twitter-link" target="_blank" href="https://twitter.com/outlineusa">Follow us on Twitter</a></li>
