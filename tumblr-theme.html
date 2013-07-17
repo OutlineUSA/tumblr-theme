@@ -38,11 +38,16 @@
   <title>{Title}{block:PostSummary}: {PostSummary}{/block:PostSummary}</title>
   {block:Description}<meta name="description" content="{MetaDescription}"/>{/block:Description}
 
+  <meta property='og:image' content='https://s3.amazonaws.com/outline-tumblr-assets/O.png'>
+  <meta property="og:site_name" content="Outline Blog"/>
+  <meta property="og:type" content="blog"/>
+
   <link rel="shortcut icon" href="{Favicon}"/>
   <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}"/>
   <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600' rel='stylesheet' type='text/css'>
   <link href='http://outline.com/static/resources/neosans/stylesheet.css' rel='stylesheet' type='text/css'>
+  <link href='https://s3.amazonaws.com/outline-tumblr-assets/clean-share-buttons.css' rel='stylesheet' type='text/css'>
 <style type="text/css">
 body {
   line-height: 1.45em;
@@ -227,6 +232,35 @@ a.alt-underline:hover {
 }
 .follow-link {
   display: none;
+}
+.share-wrapper {
+  margin-top: .5em
+}
+.share-wrapper a {
+  -webkit-font-smoothing: antialiased;
+  background: #718299 10px center no-repeat;
+  background-image: url('https://s3.amazonaws.com/outline-tumblr-assets/assets/facebook-share-logo.png');
+  background-size: 17px 17px;
+  color: #fff;
+  padding: .1em 1em .1em 2.5em;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  text-decoration: none !important;
+  -webkit-transition: background-color .2s;
+}
+.share-wrapper a:hover {
+  background-color: #456784;
+}
+.share-wrapper a[data-type=twitter] {
+  background-color: #71b8d5;
+  background-color: #89c0d7;
+  background-image: url('https://s3.amazonaws.com/outline-tumblr-assets/assets/twitter-tweet-logo.png')
+}
+.share-wrapper a[data-type=twitter]:hover {
+  background-color: #54abcf;
+}
+.share-wrapper a .share-count-indicator {
+  color: #999;
 }
 @media (min-width: 550px) {
   body {
@@ -464,6 +498,10 @@ a.alt-underline:hover {
               {lang:Tags}:
               {block:Tags}<a href="{TagURL}">{Tag}</a> {/block:Tags}
             </p>{/block:HasTags}
+            <div class='share-wrapper'>
+              <p><a class='share-button' data-type='facebook' data-url='{Permalink}'>Share</a>
+                <a class='share-button' data-type='twitter' data-url='{Permalink}'>Tweet</a></p>
+            </div>
           </div>
 
         </div>
@@ -551,6 +589,7 @@ a.alt-underline:hover {
 //]]>
 </script>
 {/block:IfDisqusShortname}
+<script type='text/javascript' src='https://s3.amazonaws.com/outline-tumblr-assets/clean-share-buttons-jquery.min.js'></script>
 
 </body>
 </html>
