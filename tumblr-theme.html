@@ -100,7 +100,7 @@ blockquote p:after {
   content: '”';
 }
 .post {
-  padding: 2em 0;
+  padding: 2em 0 1em;
   border-bottom: 1px solid #ddd;
 }
 .meta {
@@ -109,6 +109,15 @@ blockquote p:after {
 }
 .meta p {
   margin-bottom: 0;
+}
+.date {
+  font-weight: 300;
+}
+.tags {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-bottom: .5em
 }
 .tags a {
   margin: 0 .3em;
@@ -234,7 +243,8 @@ a.alt-underline:hover {
   display: none;
 }
 .share-wrapper {
-  margin-top: .5em
+  margin-top: .5em;
+  margin-bottom: 1em
 }
 .share-wrapper a {
   -webkit-font-smoothing: antialiased;
@@ -247,6 +257,7 @@ a.alt-underline:hover {
   -moz-border-radius: 3px;
   text-decoration: none !important;
   -webkit-transition: background-color .2s;
+  margin-bottom: .5em;
 }
 .share-wrapper a:hover {
   background-color: #456784;
@@ -261,6 +272,12 @@ a.alt-underline:hover {
 }
 .share-wrapper a .share-count-indicator {
   color: #999;
+}
+.clear {
+  display: none;
+}
+.postnotes li {
+  margin: 0;
 }
 @media (min-width: 550px) {
   body {
@@ -479,24 +496,13 @@ a.alt-underline:hover {
           {/block:PermalinkPage}
           {/block:IfDisqusShortname}
     
-          {block:PostNotes}<div class="postnotes">
-            {PostNotes}
-            <div class="clear">&nbsp;</div>
-          </div>{/block:PostNotes}
-          
           <div class="meta">
             <h4 class='author'><a href='http://bit.ly/outline-{PostAuthorName}'><img src='{PostAuthorPortraitURL-48}' alt=''></a>
-              <a href='http://bit.ly/outline-{PostAuthorName}' class='alt-underline'>{PostAuthorTitle}</a></h4>
-            {block:Date}
-            <p>{TimeAgo}</p>
-            {/block:Date}
+              <a href='http://bit.ly/outline-{PostAuthorName}' class='alt-underline'>{PostAuthorTitle}</a><span class='date'>, {block:Date}{TimeAgo}{/block:Date}</span></h4>
+            
     
             {block:Date}{block:IfDisqusShortname}<a href="{Permalink}#disqus_thread" class="meta comments_link"></a>{block:IfDisqusShortname}{/block:Date}
     
-            {block:NoteCount}<p class="meta">
-              {lang:Notes}:
-              <span class="notecount">{NoteCount}</span>
-            </p>{/block:NoteCount}
     
             {block:RebloggedFrom}<p class="reblog">
               {lang:Reblogged from ReblogParentName 2}
@@ -510,8 +516,15 @@ a.alt-underline:hover {
               <p><a class='share-button' data-type='facebook' data-url='{Permalink}'>Share</a>
                 <a class='share-button' data-type='twitter' data-url='{Permalink}'>Tweet</a></p>
             </div>
+            {block:NoteCount}<p class="meta">
+              <a href='{Permalink}'>{lang:Notes}
+              <span class="notecount">({NoteCount})</span></a>
+            </p>{/block:NoteCount}
+            {block:PostNotes}<div class="postnotes">
+              {PostNotes}
+              <div class="clear">&nbsp;</div>
+            </div>{/block:PostNotes}
           </div>
-
         </div>
       {/block:Posts}
       </div>
