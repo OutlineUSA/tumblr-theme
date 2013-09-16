@@ -38,30 +38,25 @@
   <title>{Title}{block:PostSummary}: {PostSummary}{/block:PostSummary}</title>
   {block:Description}<meta name="description" content="{MetaDescription}"/>{/block:Description}
 
-  <meta property='og:image' content='https://s3.amazonaws.com/outline-tumblr-assets/O.png'>
+  <meta property='og:image' content='https://outline-resources.s3.amazonaws.com/img/og-image-logo.png'>
   <meta property="og:site_name" content="Outline Blog"/>
   <meta property="og:type" content="blog"/>
 
   <link rel="shortcut icon" href="{Favicon}"/>
   <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}"/>
-  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600' rel='stylesheet' type='text/css'>
-  <link href='http://outline.com/static/resources/neosans/stylesheet.css' rel='stylesheet' type='text/css'>
   <link href='https://s3.amazonaws.com/outline-tumblr-assets/clean-share-buttons.css' rel='stylesheet' type='text/css'>
+  <link href='http://outline.com/static/css/lib/bootstrap3.css' rel='stylesheet'>
+  <link href='http://outline.com/static/css/compiled/main.css' rel='stylesheet'>
 <style type="text/css">
 body {
-  line-height: 1.45em;
-  font-size: 18px;
   color: #000;
   font-family: 'Source Sans Pro', arial, sans-serif;
   font-weight: 300;
 }
 h1, h2, h3, h4, h5, h6 {
+  font-family: 'Source Sans Pro', arial, sans-serif;
   line-height: 1.3em;
-}
-h1, h2 {
-  font-family: "neo", 'Source Sans Pro', arial, sans-serif;
-  font-weight: 200;
 }
 h1 a, h2 a {
   font-weight: inherit;
@@ -69,24 +64,25 @@ h1 a, h2 a {
 h2 {
   font-size: 2.2em;
 }
-ul, ol {
-  margin-left: 1.8em;
+#wrapper {
+  line-height: 1.5em;
+  font-size: 18px;
 }
-li {
-  line-height: 1.8em;
+#wrapper li {
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+#wrapper ul, #wrapper ol {
+  margin-left: 1.8em;
   margin-top: 1em;
   margin-bottom: 1em;
 }
+
 a {
   font-weight: bold;
 }
 a, a:hover {
   color: inherit;
-}
-blockquote {
-  padding: 10px 15px;
-  border-left-color: #78c1cc;
-  margin: 20px 0 20px 5px;
 }
 blockquote p {
   font-size: inherit;
@@ -252,7 +248,9 @@ a.alt-underline:hover {
   background-image: url('https://s3.amazonaws.com/outline-tumblr-assets/assets/facebook-share-logo.png');
   background-size: 17px 17px;
   color: #fff;
-  padding: .1em 1em .1em 2.5em;
+  padding: .5em 1em .5em 2.5em;
+  height: 2em;
+  line-height: 1em;
   border-radius: 3px;
   -moz-border-radius: 3px;
   text-decoration: none !important;
@@ -272,6 +270,8 @@ a.alt-underline:hover {
 }
 .share-wrapper a .share-count-indicator {
   color: #999;
+  height: 2em;
+  line-height: 1.5em;
 }
 .clear {
   display: none;
@@ -301,7 +301,7 @@ a.alt-underline:hover {
 }
 @media (min-width: 960px) {
   blockquote {
-    margin-left: -20px;
+    margin-left: 1em;
   }
   .span33 {
     width: 220px;
@@ -356,22 +356,13 @@ a.alt-underline:hover {
     position: static;
   }
 }
-@media (min-width: 1200px) {
-  .span33 {
-    padding-left: 140px;
-  }
-  .span66 {
-    margin-left: 120px;
-  }
-  .footer-wrapper {
-    left: 320px;
-  }
-}
+
 @media (-webkit-min-device-pixel-ratio: 1.5) {
   .social-icons a {
     background-image: url('https://s3.amazonaws.com/outline-tumblr-assets/social_icons.png');
     background-size: 128px 32px;
 }
+
 {CustomCSS}
 </style>
   <!--[if lte IE 6]>
@@ -390,209 +381,225 @@ a.alt-underline:hover {
 </script>
 </head>
 <body>
-<div id="border"></div>
 
-<div class='new-container'>
-  <div class='row'>
-    <div class='span33'>
-      <div id="header">
-        <div class='header_sub'>
-          <h1><a href="http://outline.com" target="_blank" class='homepage-link'>Outline</a> <a href="/">Blog</a></h1>
-          
-          
-          
-          <div class='blog-links'>
-            <p class='little-label'>Founders&rsquo; blogs</p>
-            <ul>
-                <li><a href="https://medium.com/@nikitabier" class='blog-link alt-underline' target='_blank'>Nikita Bier</a></li>
-                <li><a href="https://medium.com/@jeremyblalock" class='blog-link alt-underline' target='_blank'>Jeremy Blalock</a></li>
-                <li><a href="http://vasir.net/blog/" class='blog-link alt-underline' target='_blank'>Erik Hazzard</a></li>
-            </ul>
-          </div>
-          <p class='little-label follow-link'>Follow Us</p>
-          <ul class="social-icons">
-            <li class="first"><a class="fb-link" href="https://www.facebook.com/pages/Outline/127028647476315" target="_blank">Like us on Facebook</a></li>
-            <li><a class="twitter-link" target="_blank" href="https://twitter.com/outlineusa">Follow us on Twitter</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class='span66'>
-      <div id="posts">
-      {block:Posts}
-        <div class="post" id="post{PostID}">
-    
-          {block:Text}
-          <div class="content text-post">
-            {block:Title}<h2><a href='{Permalink}'>{Title}</a></h2>{/block:Title}
-    
-            <div class="text">{Body}</div>
-          </div>
-          {/block:Text}
-    
-          {block:Photo}
-          {block:HighRes}{block:IfLinkForLargeImages}
-          {/block:IfLinkForLargeImages}{/block:HighRes}
-          <div class="content photo-post">
-            <div class="photo">
-              {LinkOpenTag}<a href='{URL}'><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></a>{LinkCloseTag}
-            </div>
-    
-            {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
-          </div>
-          {/block:Photo}
-    
-          {block:Quote}
-          <div class="content quote-post {Length}-quote">
-            <blockquote class="quote">{Quote}</blockquote>
-    
-            {block:Source}<div class="source">&mdash;&#8194;{Source}</div>{/block:Source}
-          </div>
-          {/block:Quote}
-    
-          {block:Link}
-          <div class="content link-post">
-            <h2 class="link"><a href="{URL}">{Name}</a></h2>
-    
-            {block:Description}<div class="caption">{Description}</div>{/block:Description}
-          </div>
-          {/block:Link}
-    
-          {block:Chat}
-          <div class="content chat-post">
-            {block:Title}<h3>{Title}</h3>{/block:Title}
-    
-            <ol class="chat">
-              {block:Lines}<li class="{Alt} speaker{UserNumber}">
-                {block:Label}<span class="chat-label">{Label}</span>{/block:Label}
-                <span class="line">{Line}</span>
-              </li>{/block:Lines}
-            </ol>
-          </div>
-          {/block:Chat}
-    
-          {block:Video}
-          <div class="content video-post">
-            <div class="video">{Video-400}</div>
-    
-            {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
-          </div>
-          {/block:Video}
-    
-          {block:Audio}
-          <p class="meta">{lang:Plays}: <span class="plays">{FormattedPlayCount}</span></p>
-          <div class="content audio-post">
-            <div class="audio">{AudioPlayerBlack}</div>
-    
-            {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
-          </div>
-          {/block:Audio}
-        
-          {block:IfDisqusShortname}
-          {block:PermalinkPage}
-          <div id="disqus_thread"></div>
-          <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
-          <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript>
-          {/block:PermalinkPage}
-          {/block:IfDisqusShortname}
-    
-          <div class="meta">
-            <h4 class='author'><a href='http://bit.ly/outline-{PostAuthorName}'><img src='{PostAuthorPortraitURL-48}' alt=''></a>
-              <a href='http://bit.ly/outline-{PostAuthorName}' class='alt-underline'>{PostAuthorTitle}</a><span class='date'>, {block:Date}{TimeAgo}{/block:Date}</span></h4>
-            
-    
-            {block:Date}{block:IfDisqusShortname}<a href="{Permalink}#disqus_thread" class="meta comments_link"></a>{block:IfDisqusShortname}{/block:Date}
-    
-    
-            {block:RebloggedFrom}<p class="reblog">
-              {lang:Reblogged from ReblogParentName 2}
-            </p>{/block:RebloggedFrom}
-    
-            {block:HasTags}<p class="tags">
-              {lang:Tags}:
-              {block:Tags}<a href="{TagURL}">{Tag}</a> {/block:Tags}
-            </p>{/block:HasTags}
-            <div class='share-wrapper'>
-              <p><a class='share-button' data-type='facebook' data-url='{Permalink}'>Share</a>
-                <a class='share-button' data-type='twitter' data-url='{Permalink}'>Tweet</a></p>
-            </div>
-            {block:NoteCount}<p class="meta">
-              <a href='{Permalink}'>{lang:Notes}
-              <span class="notecount">({NoteCount})</span></a>
-            </p>{/block:NoteCount}
-            {block:PostNotes}<div class="postnotes">
-              {PostNotes}
-              <div class="clear">&nbsp;</div>
-            </div>{/block:PostNotes}
-          </div>
-        </div>
-      {/block:Posts}
-      </div>
+<div class="navbar navbar-fixed-top navbar-default">
+  <div class="container"> <!--id="top_sub">-->
+      <button class="navbar-toggle hidden-desktop pull-right collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">≡
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+    <a href="http://outline.com/" class="navbar-brand"><span class="logo">Outline</span></a>
+      <!--<h3>Actionable policy simulation</h3>-->
+    <div class="collapse navbar-collapse bs-navbar-collapse">
+      <ul class="nav nav-collapse pull-right navbar-nav">
+        <li><a href="http://outline.com/governments">For Governments</a></li>
+        <li><a href="/" class='active'>Blog</a></li>
+        <li><a href="http://outline.com/about">About Us</a></li>
+        <li><a href="http://outline.com/careers">Careers</a></li>
+      </ul>
     </div>
   </div>
-  <div class='row'>
-    <div class='span66 footer-wrapper'>
-      <div id="footer">
-        <div id="pagination">
-        {block:Pagination}
-          <p class="back">&nbsp;{block:NextPage}
-            <a href="{NextPage}">{lang:More} &rarr;</a>
-          {/block:NextPage}</p>
-          <p class="forward">{block:PreviousPage}
-            <a href="{PreviousPage}">&larr; {lang:Back}</a>
-          {/block:PreviousPage}&nbsp;</p>
-          <p class="page">
-            {lang:Page CurrentPage of TotalPages}
-          </p>
-        {/block:Pagination}
+</div>
+
+<div id='wrapper'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
+        <div id="posts">
+        {block:Posts}
+          <div class="post" id="post{PostID}">
     
-        {block:PermalinkPagination}
-          {block:PreviousPost}<p class="back">
-            <a href="{PreviousPost}">{lang:Older} &rarr;</a>
-          </p>{/block:PreviousPost}
-          {block:NextPost}<p class="forward">
-            <a href="{NextPost}">&larr; {lang:Newer}</a>
-          {/block:NextPost}</p>
-        {/block:PermalinkPagination}
+            {block:Text}
+            <div class="content text-post">
+              {block:Title}<h1><a href='{Permalink}'>{Title}</a></h1>{/block:Title}
     
-        {block:DayPagination}
-          {block:PreviousDayPage}<p class="back">
-            <a href="{PreviousDayPage}">{lang:Previous day}</a> &rarr;
-          {/block:PreviousDayPage}</p>
-          {block:NextDayPage}<p class="forward">
-            &larr; <a href="{NextDayPage}">{lang:Next day}</a>
-          </p>{/block:NextDayPage}
-        {/block:DayPagination}
+              <div class="text">{Body}</div>
+            </div>
+            {/block:Text}
+    
+            {block:Photo}
+            {block:HighRes}{block:IfLinkForLargeImages}
+            {/block:IfLinkForLargeImages}{/block:HighRes}
+            <div class="content photo-post">
+              <div class="photo">
+                {LinkOpenTag}<a href='{URL}'><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></a>{LinkCloseTag}
+              </div>
+    
+              {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+            </div>
+            {/block:Photo}
+    
+            {block:Quote}
+            <div class="content quote-post {Length}-quote">
+              <blockquote class="quote">{Quote}</blockquote>
+    
+              {block:Source}<div class="source">&mdash;&#8194;{Source}</div>{/block:Source}
+            </div>
+            {/block:Quote}
+    
+            {block:Link}
+            <div class="content link-post">
+              <h1 class="link"><a href="{URL}" target='_blank'>{Name}</a></h1>
+    
+              {block:Description}<div class="caption">{Description}</div>{/block:Description}
+            </div>
+            {/block:Link}
+    
+            {block:Chat}
+            <div class="content chat-post">
+              {block:Title}<h3>{Title}</h3>{/block:Title}
+    
+              <ol class="chat">
+                {block:Lines}<li class="{Alt} speaker{UserNumber}">
+                  {block:Label}<span class="chat-label">{Label}</span>{/block:Label}
+                  <span class="line">{Line}</span>
+                </li>{/block:Lines}
+              </ol>
+            </div>
+            {/block:Chat}
+    
+            {block:Video}
+            <div class="content video-post">
+              <div class="video">{Video-400}</div>
+    
+              {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+            </div>
+            {/block:Video}
+    
+            {block:Audio}
+            <p class="meta">{lang:Plays}: <span class="plays">{FormattedPlayCount}</span></p>
+            <div class="content audio-post">
+              <div class="audio">{AudioPlayerBlack}</div>
+    
+              {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+            </div>
+            {/block:Audio}
+        
+            {block:IfDisqusShortname}
+            {block:PermalinkPage}
+            <div id="disqus_thread"></div>
+            <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+            <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript>
+            {/block:PermalinkPage}
+            {/block:IfDisqusShortname}
+    
+            <div class="meta">
+              <h4 class='author'><a href='http://bit.ly/outline-{PostAuthorName}'><img src='{PostAuthorPortraitURL-48}' alt=''></a>
+                <a href='http://bit.ly/outline-{PostAuthorName}' class='alt-underline'>{PostAuthorTitle}</a><span class='date'>, {block:Date}{TimeAgo}{/block:Date}</span></h4>
+            
+    
+              {block:Date}{block:IfDisqusShortname}<a href="{Permalink}#disqus_thread" class="meta comments_link"></a>{block:IfDisqusShortname}{/block:Date}
+    
+    
+              {block:RebloggedFrom}<p class="reblog">
+                {lang:Reblogged from ReblogParentName 2}
+              </p>{/block:RebloggedFrom}
+    
+              {block:HasTags}<p class="tags">
+                {lang:Tags}:
+                {block:Tags}<a href="{TagURL}">{Tag}</a> {/block:Tags}
+              </p>{/block:HasTags}
+              <div class='share-wrapper'>
+                <p><a class='share-button' data-type='facebook' data-url='{Permalink}'>Share</a>
+                  <a class='share-button' data-type='twitter' data-url='{Permalink}'>Tweet</a></p>
+              </div>
+              {block:NoteCount}<p class="meta">
+                <a href='{Permalink}'>{lang:Notes}
+                <span class="notecount">({NoteCount})</span></a>
+              </p>{/block:NoteCount}
+              {block:PostNotes}<div class="postnotes">
+                {PostNotes}
+                <div class="clear">&nbsp;</div>
+              </div>{/block:PostNotes}
+            </div>
+          </div>
+        {/block:Posts}
         </div>
-    
-        {block:IfShowPeopleIFollow}
-          {block:GroupMembers}
-            <p id="members" class="avatars">
-              <span>{lang:Members}:</span>
-              {block:GroupMember}
-                <a href="{GroupMemberURL}"><img
-                  src="{GroupMemberPortraitURL-30}" alt="[{GroupMemberName}]"
-                  title="{GroupMemberTitle} ({GroupMemberName})"/></a>
-              {/block:GroupMember}
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
+        <div id="footer">
+          <div id="pagination">
+          {block:Pagination}
+            <p class="back">&nbsp;{block:NextPage}
+              <a href="{NextPage}">{lang:More} &rarr;</a>
+            {/block:NextPage}</p>
+            <p class="forward">{block:PreviousPage}
+              <a href="{PreviousPage}">&larr; {lang:Back}</a>
+            {/block:PreviousPage}&nbsp;</p>
+            <p class="page">
+              {lang:Page CurrentPage of TotalPages}
             </p>
-          {/block:GroupMembers}
+          {/block:Pagination}
     
-          {block:Following}
-            <p id="following" class="avatars">
-              <span>{lang:Following}:</span>
-              {block:Followed}
-                <a href="{FollowedURL}"><img
-                  src="{FollowedPortraitURL-30}" alt="[{FollowedName}]"
-                  title="{FollowedTitle} ({FollowedName})"/></a>
-              {/block:Followed}
-            </p>
-          {/block:Following}
-        {/block:IfShowPeopleIFollow}
+          {block:PermalinkPagination}
+            {block:PreviousPost}<p class="back">
+              <a href="{PreviousPost}">{lang:Older} &rarr;</a>
+            </p>{/block:PreviousPost}
+            {block:NextPost}<p class="forward">
+              <a href="{NextPost}">&larr; {lang:Newer}</a>
+            {/block:NextPost}</p>
+          {/block:PermalinkPagination}
     
+          {block:DayPagination}
+            {block:PreviousDayPage}<p class="back">
+              <a href="{PreviousDayPage}">{lang:Previous day}</a> &rarr;
+            {/block:PreviousDayPage}</p>
+            {block:NextDayPage}<p class="forward">
+              &larr; <a href="{NextDayPage}">{lang:Next day}</a>
+            </p>{/block:NextDayPage}
+          {/block:DayPagination}
+          </div>
+    
+          {block:IfShowPeopleIFollow}
+            {block:GroupMembers}
+              <p id="members" class="avatars">
+                <span>{lang:Members}:</span>
+                {block:GroupMember}
+                  <a href="{GroupMemberURL}"><img
+                    src="{GroupMemberPortraitURL-30}" alt="[{GroupMemberName}]"
+                    title="{GroupMemberTitle} ({GroupMemberName})"/></a>
+                {/block:GroupMember}
+              </p>
+            {/block:GroupMembers}
+    
+            {block:Following}
+              <p id="following" class="avatars">
+                <span>{lang:Following}:</span>
+                {block:Followed}
+                  <a href="{FollowedURL}"><img
+                    src="{FollowedPortraitURL-30}" alt="[{FollowedName}]"
+                    title="{FollowedTitle} ({FollowedName})"/></a>
+                {/block:Followed}
+              </p>
+            {/block:Following}
+          {/block:IfShowPeopleIFollow}
+    
+        </div>
       </div>
     </div>
   </div>
 </div>
+<footer id="bottom" class="container">
+  <div class="bottom_sub row">
+    <div class="col-lg-2 col-sm-3 col-lg-offset-2 col-xs-6">
+      <h4>Links</h4>
+      <ul>
+        
+        <li><a href="http://outline.com/about">About Us</a></li>
+        <li><a href="http://outline.com/careers">Careers</a></li>
+      </ul>
+    </div>
+    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
+      <h4>Get in touch</h4>
+      <ul class="bottom-nav">
+        <li class="first"><a class="fb-link" href="https://www.facebook.com/pages/Outline/127028647476315" target="_blank">Facebook</a></li>
+        <li><a class="twitter-link" target="_blank" href="https://twitter.com/outlineusa">Twitter</a></li>
+        <li class="last"><a class="email-link" href="mailto:founders@outline.com">Email Us</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
 
 {block:IfDisqusShortname}
 <script type="text/javascript">
@@ -611,6 +618,7 @@ a.alt-underline:hover {
 </script>
 {/block:IfDisqusShortname}
 <script type='text/javascript' src='https://s3.amazonaws.com/outline-tumblr-assets/clean-share-buttons-jquery.min.js'></script>
+<script type='text/javascript' src='http://outline.com/static/js/lib/bootstrap.js'></script>
 
 </body>
 </html>
